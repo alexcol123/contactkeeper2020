@@ -1,5 +1,15 @@
 const express = require("express");
+const connectDB = require('./config/db')
+
+
 const app = express();
+
+// Connect Database 
+connectDB();
+
+// Init Midlleware
+app.use(express.json({extended: false}))
+
 
 app.get("/", (rep, res) =>
   res.json({
