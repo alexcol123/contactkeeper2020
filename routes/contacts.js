@@ -67,7 +67,6 @@ router.post(
 //@desc     Update contact
 //@access   Private
 
-
 router.put('/:id', auth, async (req, res) => {
   const { name, email, phone, type } = req.body;
 
@@ -99,7 +98,6 @@ router.put('/:id', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
-
 
 //@route    Delete  api/contacts/:id
 //@desc     Delete contact

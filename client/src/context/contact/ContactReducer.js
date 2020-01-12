@@ -6,7 +6,7 @@ import {
   UPDATE_CONTACT,
   FILTER_CONTACTS,
   CLEAR_FILTER
-} from "../types";
+} from '../types';
 
 export default (state, action) => {
   switch (action.type) {
@@ -16,19 +16,19 @@ export default (state, action) => {
         contacts: [...state.contacts, action.payload]
       };
 
-    case DELETE_CONTACT:
-      return {
-        ...state,
-        contacts: state.contacts.filter(
-          contact => contact.id !== action.payload
-        )
-      };
-
     case UPDATE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map(contact =>
           contact.id === action.payload.id ? action.payload : contact
+        )
+      };
+
+    case DELETE_CONTACT:
+      return {
+        ...state,
+        contacts: state.contacts.filter(
+          contact => contact.id !== action.payload
         )
       };
 
@@ -48,12 +48,8 @@ export default (state, action) => {
       return {
         ...state,
         filtered: state.contacts.filter(contact => {
-          const regex = new RegExp(`${action.payload}`, `gi`);
-          return (
-            contact.name.match(regex) ||
-            contact.email.match(regex) ||
-            contact.phone.match(regex)
-          );
+          const regex = new RegExp(`${action.payload}`, 'gi');
+          return contact.name.match(regex) || contact.email.match(regex);
         })
       };
 
