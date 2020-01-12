@@ -32,7 +32,6 @@ const AuthState = props => {
 
   // Logout
 
-
   // CLear Errors
 
   return (
@@ -42,7 +41,7 @@ const AuthState = props => {
         isAuthenticated: state.isAuthenticated,
         loading: state.loading,
         user: state.user,
-        erro: state.eroor
+        error: state.error
       }}
     >
       {props.children}
